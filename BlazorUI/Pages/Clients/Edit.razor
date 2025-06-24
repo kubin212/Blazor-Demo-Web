@@ -1,0 +1,129 @@
+﻿@page "/Clients/Edit/{Id:int}"
+@using BlazorUI.Models
+@using System.Text.Json.Nodes
+@using System.Net.Http.Json
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<div class="row">
+    <div class="col-lg-8">
+        <h1 class="mb-5">Edit Client</h1>
+
+        @if (Client == null)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else
+        {
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Name</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" @bind="ClientData.Name" />
+                    <span class="text-danger">@Errors["Name"]?[0]</span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Email</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" @bind="ClientData.Email" />
+                    <span class="text-danger">@Errors["Email"]?[0]</span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Phone</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" @bind="ClientData.PhoneNumber" />
+                    <span class="text-danger">@Errors["Phone"]?[0]</span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Address</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" @bind="ClientData.Address" />
+                    <span class="text-danger">@Errors["Address"]?[0]</span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Status</label>
+                <div class="col-md-8">
+                    <select class="form-select" @bind="ClientData.Status">
+                        <option value="New">New</option>
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                        <option value="Permanent">Permanent</option>
+                        <option value="Lead">Lead</option>
+                    </select>
+                    <span class="text-danger">@Errors["Status"]?[0]</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="offset-md-4 col-md-4 d-grid">
+                    <button class="btn btn-primary" @onclick="UpdateClient">Submit</button>
+                </div>
+                <div class="col-md-4 d-grid">
+                    <a class="btn btn-secondary" href="/Clients">Cancel</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    public Client? Client = null;
+    public ClientDto ClientData { get; set; } = new ClientDto();
+    public JsonNode Errors { get; set; } = new JsonObject();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        try
+        {
+            Client = await Http.GetFromJsonAsync<Client>($"https://localhost:7229/api/Clients/{Id}");
+            if (Client != null)
+            {
+                ClientData = new ClientDto
+                {
+                    Name = Client.Name,
+                    Email = Client.Email,
+                    PhoneNumber = Client.PhoneNumber,
+                    Address = Client.Address,
+                    Status = Client.Status
+                };
+            }
+        }
+        catch (Exception ex)
+        {
+            Errors["Error"] = ex.Message;
+        }
+    }
+
+    protected async Task UpdateClient()
+    {
+        try
+        {
+            var response = await Http.PutAsJsonAsync($"https://localhost:7229/api/Clients/{Id}", ClientData);
+            if (response.IsSuccessStatusCode)
+            {
+                NavigationManager.NavigateTo("/Clients");
+            }
+            else
+            {
+                // Handle error response
+                var errorMessage = await response.Content.ReadAsStringAsync();
+                try
+                {
+                    var jsonEx = JsonNode.Parse(errorMessage);
+                    Errors = jsonEx?["errors"] ?? new JsonObject();
+                }
+                catch (Exception)
+                {
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Errors["Error"] = ex.Message;
+        }
+    }
+}

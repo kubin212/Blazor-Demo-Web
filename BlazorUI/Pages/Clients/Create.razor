@@ -1,0 +1,99 @@
+﻿@inject HttpClient Http  
+@inject NavigationManager NavigationManager  
+@using System.Net.Http.Json
+
+@page "/Clients/Create"  
+@using BlazorUI.Models  
+@using System.Text.Json.Nodes
+
+<div class="row">  
+    <div class="col-lg-8">  
+        <h1 class="text-center mb-3">Create New Client</h1>  
+        <div class="row mb-3">  
+            <label class="col-md-4 col-form-label">Name</label>  
+            <div class="col-md-8">  
+                <input type="text" class="form-control" @bind="ClientData.Name" />  
+                <span class="text-danger">@Errors["Name"]?[0]</span>
+            </div>  
+        </div>  
+        <div class="row mb-3">  
+            <label class="col-md-4 col-form-label">Email</label>  
+            <div class="col-md-8">  
+                <input type="text" class="form-control" @bind="ClientData.Email" />  
+                <span class="text-danger">@Errors["Email"]?[0]</span>
+            </div>  
+        </div>  
+        <div class="row mb-3">  
+            <label class="col-md-4 col-form-label">Phone</label>  
+            <div class="col-md-8">  
+                <input type="text" class="form-control" @bind="ClientData.PhoneNumber" /> 
+                <span class="text-danger">@Errors["Phone"]?[0]</span>
+            </div>  
+        </div>  
+        <div class="row mb-3">  
+            <label class="col-md-4 col-form-label">Address</label>  
+            <div class="col-md-8">  
+                <input type="text" class="form-control" @bind="ClientData.Address" /> 
+                <span class="text-danger">@Errors["Address"]?[0]</span>
+            </div>  
+        </div>  
+        <div class="row mb-3">  
+            <label class="col-md-4 col-form-label">Status</label>  
+            <div class="col-md-8">  
+                <select class="form-select" @bind="ClientData.Status">  
+                    <option value="New">New</option>  
+                    <option value="Active">Active</option>  
+                    <option value="Inactive">Inactive</option>  
+                    <option value="Permanent">Permanent</option>  
+                    <option value="Lead">Lead</option>  
+                </select>  
+                <span class="text-danger">@Errors["Status"]?[0]</span>
+            </div>  
+        </div>  
+        <div class="row">  
+            <div class="offset-md-4 col-md-4 d-grid">  
+                <button class="btn btn-primary" @onclick="SaveClient">Submit</button>  
+            </div>  
+            <div class="col-md-4 d-grid">  
+                <a class="btn btn-secondary" href="/Clients">Cancel</a>  
+            </div>  
+        </div>  
+    </div>  
+</div>  
+
+@code {
+    public ClientDto ClientData { get; set; } = new ClientDto();  
+    public JsonNode Errors { get; set; } = new JsonObject();
+
+    protected async Task SaveClient()  
+    {  
+        try  
+        {  
+            var response = await Http.PostAsJsonAsync("https://localhost:7229/api/Clients", ClientData);  
+            if (response.IsSuccessStatusCode)  
+            {  
+                // Redirect to the Clients list page after successful creation  
+                NavigationManager.NavigateTo("/Clients");  
+            }  
+            else  
+            {  
+                // Handle error response  
+                var errorMessage = await response.Content.ReadAsStringAsync();  
+                Console.WriteLine($"Error creating client: {errorMessage}");  
+
+                try
+                {
+                    var jsonEx = JsonNode.Parse(errorMessage);
+                    Errors = jsonEx?["errors"] ?? new JsonObject();
+                }
+                catch (Exception)
+                {
+                }
+            }  
+        }  
+        catch (Exception ex)  
+        {  
+            Console.WriteLine($"Exception occurred while saving client: {ex.Message}");  
+        }  
+    }  
+}

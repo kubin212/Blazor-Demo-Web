@@ -1,0 +1,92 @@
+﻿@page "/Clients/Delete/{Id:int}"
+@using BlazorUI.Models
+
+<div class="row">
+    <div class="col-lg-8">
+        <h1 class="mb-5">Delete Client</h1>
+
+        @if (Client == null)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else
+        {
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Name</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" @bind="ClientData.Name" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Email</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" @bind="ClientData.Email" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Phone</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" @bind="ClientData.PhoneNumber" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Address</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" @bind="ClientData.Address" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-md-4 col-form-label">Status</label>
+                <div class="col-md-8">
+                    <input type="text" class="form-control" @bind="ClientData.Status" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="offset-md-4 col-md-4 d-grid">
+                    <button class="btn btn-danger" @onclick="DeleteClient">Delete</button>
+                </div>
+                <div class="col-md-4 d-grid">
+                    <a class="btn btn-secondary" href="/Clients">Cancel</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    public Client? Client = null;
+    public ClientDto ClientData { get; set; } = new ClientDto();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        try
+        {
+            Client = await Http.GetFromJsonAsync<Client>($"https://localhost:7229/api/Clients/{Id}");
+            if (Client != null)
+            {
+                ClientData = new ClientDto
+                {
+                    Name = Client.Name,
+                    Email = Client.Email,
+                    PhoneNumber = Client.PhoneNumber,
+                    Address = Client.Address,
+                    Status = Client.Status
+                };
+            }
+        }
+        catch (Exception)
+        {
+        }
+    }
+
+    protected async Task DeleteClient()
+    {
+        var response = await Http.DeleteAsync($"https://localhost:7229/api/Clients/{Id}");
+        NavigationManager.NavigateTo("/Clients");
+    }
+}

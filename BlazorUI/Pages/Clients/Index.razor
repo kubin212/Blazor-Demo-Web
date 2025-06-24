@@ -1,0 +1,80 @@
+﻿@page "/Clients"
+@using BlazorUI.Models
+@using System.Net.Http.Json
+
+<h1 class="text-center mb-3">List of Clients</h1>
+
+<a class="btn btn-primary mb-3" href="/Clients/Create">New Client</a>
+
+@if (clients == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Status</th>
+                <th>Created At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var client in clients.Select((c, i) => new { Client = c, Index = i }))
+            {
+                <tr>
+                    <td>@(client.Index + 1)</td>
+                    <td>@client.Client.Name</td>
+                    <td>@client.Client.Email</td>
+                    <td>@client.Client.PhoneNumber</td>
+                    <td>@client.Client.Address</td>
+                    <td>
+                        @{
+                            string badgeClass = client.Client.Status switch
+                            {
+                                "New" => "badge bg-success",
+                                "Active" => "badge bg-primary",
+                                "Inactive" => "badge bg-danger",
+                                "Permanent" => "badge bg-warning",
+                                "Lead" => "badge bg-info",
+                                _ => "badge bg-secondary"
+                            };
+                        }
+                        <span class="@badgeClass">@client.Client.Status</span>
+                    </td>
+                    <td>@client.Client.CreatedAt.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <a class="btn btn-primary" href="/Clients/Edit/@client.Client.Id">Edit</a>
+                        <a class="btn btn-danger" href="/Clients/Delete/@client.Client.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Client>? clients;
+
+    [Inject]
+    private HttpClient Http { get; set; } = default!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            clients = await Http.GetFromJsonAsync<List<Client>>("https://localhost:7229/api/Clients");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching clients: {ex.Message}");
+            clients = new List<Client>();
+        }
+    }
+}

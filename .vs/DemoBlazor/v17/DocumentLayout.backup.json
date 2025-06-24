@@ -1,0 +1,140 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Fluxion\\DemoBlazor\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{933A8FB7-EE3C-4DAE-A4C8-E6665D342E7A}|BlazorUI\\BlazorUI.csproj|d:\\fluxion\\demoblazor\\blazorui\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{933A8FB7-EE3C-4DAE-A4C8-E6665D342E7A}|BlazorUI\\BlazorUI.csproj|solutionrelative:blazorui\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{933A8FB7-EE3C-4DAE-A4C8-E6665D342E7A}|BlazorUI\\BlazorUI.csproj|d:\\fluxion\\demoblazor\\blazorui\\pages\\clients\\create.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{933A8FB7-EE3C-4DAE-A4C8-E6665D342E7A}|BlazorUI\\BlazorUI.csproj|solutionrelative:blazorui\\pages\\clients\\create.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{933A8FB7-EE3C-4DAE-A4C8-E6665D342E7A}|BlazorUI\\BlazorUI.csproj|d:\\fluxion\\demoblazor\\blazorui\\pages\\clients\\edit.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{933A8FB7-EE3C-4DAE-A4C8-E6665D342E7A}|BlazorUI\\BlazorUI.csproj|solutionrelative:blazorui\\pages\\clients\\edit.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{933A8FB7-EE3C-4DAE-A4C8-E6665D342E7A}|BlazorUI\\BlazorUI.csproj|d:\\fluxion\\demoblazor\\blazorui\\pages\\clients\\delete.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{933A8FB7-EE3C-4DAE-A4C8-E6665D342E7A}|BlazorUI\\BlazorUI.csproj|solutionrelative:blazorui\\pages\\clients\\delete.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{933A8FB7-EE3C-4DAE-A4C8-E6665D342E7A}|BlazorUI\\BlazorUI.csproj|d:\\fluxion\\demoblazor\\blazorui\\pages\\clients\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{933A8FB7-EE3C-4DAE-A4C8-E6665D342E7A}|BlazorUI\\BlazorUI.csproj|solutionrelative:blazorui\\pages\\clients\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.razor",
+              "DocumentMoniker": "D:\\Fluxion\\DemoBlazor\\BlazorUI\\Pages\\Clients\\Index.razor",
+              "RelativeDocumentMoniker": "BlazorUI\\Pages\\Clients\\Index.razor",
+              "ToolTip": "D:\\Fluxion\\DemoBlazor\\BlazorUI\\Pages\\Clients\\Index.razor",
+              "RelativeToolTip": "BlazorUI\\Pages\\Clients\\Index.razor",
+              "ViewState": "AgIAACIAAAAAAAAAAAAmwFAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-23T02:45:12.728Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "D:\\Fluxion\\DemoBlazor\\BlazorUI\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "BlazorUI\\Layout\\MainLayout.razor",
+              "ToolTip": "D:\\Fluxion\\DemoBlazor\\BlazorUI\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "BlazorUI\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-23T10:35:17.903Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Delete.razor",
+              "DocumentMoniker": "D:\\Fluxion\\DemoBlazor\\BlazorUI\\Pages\\Clients\\Delete.razor",
+              "RelativeDocumentMoniker": "BlazorUI\\Pages\\Clients\\Delete.razor",
+              "ToolTip": "D:\\Fluxion\\DemoBlazor\\BlazorUI\\Pages\\Clients\\Delete.razor",
+              "RelativeToolTip": "BlazorUI\\Pages\\Clients\\Delete.razor",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAiwFIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-23T04:31:36.841Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Edit.razor",
+              "DocumentMoniker": "D:\\Fluxion\\DemoBlazor\\BlazorUI\\Pages\\Clients\\Edit.razor",
+              "RelativeDocumentMoniker": "BlazorUI\\Pages\\Clients\\Edit.razor",
+              "ToolTip": "D:\\Fluxion\\DemoBlazor\\BlazorUI\\Pages\\Clients\\Edit.razor",
+              "RelativeToolTip": "BlazorUI\\Pages\\Clients\\Edit.razor",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAACwAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-23T04:04:52.438Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Create.razor",
+              "DocumentMoniker": "D:\\Fluxion\\DemoBlazor\\BlazorUI\\Pages\\Clients\\Create.razor",
+              "RelativeDocumentMoniker": "BlazorUI\\Pages\\Clients\\Create.razor",
+              "ToolTip": "D:\\Fluxion\\DemoBlazor\\BlazorUI\\Pages\\Clients\\Create.razor",
+              "RelativeToolTip": "BlazorUI\\Pages\\Clients\\Create.razor",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAEQAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-23T03:23:00.192Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
